@@ -1,3 +1,4 @@
+import { CampaignsPage } from './../campaigns/campaigns';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -9,6 +10,10 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
 
+  }
+
+  onViewEventsClick() {
+    this.navCtrl.push(CampaignsPage);
   }
 
 }
