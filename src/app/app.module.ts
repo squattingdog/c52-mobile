@@ -12,6 +12,7 @@ import { CampaignsPage } from './../pages/campaigns/campaigns';
 
 import { CampaignService } from './../providers/campaign-service';
 import { HttpClientModule } from '@angular/common/http';
+import { OAuthModule } from '../pages/oauth/oauth.module';
 
 @NgModule({
   declarations: [
