@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs/observable";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/observable';
 import { map, catchError } from 'rxjs/operators';
 
 /*
@@ -11,7 +11,7 @@ import { map, catchError } from 'rxjs/operators';
 */
 @Injectable()
 export class CampaignService {
-    //private config: Config;
+    // private config: Config;
 
     constructor(private http:HttpClient) { }
 
@@ -21,17 +21,17 @@ export class CampaignService {
             map(
                 this.extractCampaignData,
                 catchError(this.handleError)
-            )                
+            )
         );
     }
 
-    private extractCampaignData (res:Response): CampaignItem[] {
+    private extractCampaignData (res:  Response): CampaignItem[] {
         console.log(res);
-        let objects:any = res;
-        let campaigns:CampaignItem[] = [];
+        const objects: any = res;
+        const campaigns: CampaignItem[] = [];
         for (let i = 0; i < objects.length; i++) {
-            let item = objects[i];
-            let campaign = new CampaignItem(item.name, item.description, item.logoUrl, item.campaignId, item.mid);
+            const item = objects[i];
+            const campaign = new CampaignItem(item.name, item.description, item.logoUrl, item.campaignId, item.mid);
             campaigns.push(campaign);
         }
         console.log(campaigns);
@@ -41,7 +41,7 @@ export class CampaignService {
     private handleError(error: Response | any) {
         console.log(error);
         let errMsg: string;
-        if(error instanceof Response) {
+        if (error instanceof Response) {
             const err = error || '';
             errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
         } else {
