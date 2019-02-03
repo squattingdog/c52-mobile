@@ -1,0 +1,36 @@
+<!--
+  Generated template for the Campaigns page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{campaign.title}} - {{job.name}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <ion-spinner *ngIf="loading"></ion-spinner>
+    <div *ngIf="!loading && shifts.size < 1">There were not any shifts found for this event.</div>
+    <div *ngIf="!loading && shifts.size > 0">
+        <ion-list>
+            <ion-item-group *ngFor="let key of getKeys()">
+                    <ion-list-header no-padding>
+                            {{key}}
+                    </ion-list-header>
+                    <ion-item *ngFor="let shift of shifts.get(key)" style="font-size: 14px;">
+                        Time: {{shift.displayStartTime}} - {{shift.displayEndTime}}<br/>
+                        Available: {{shift.numberOfVolunteersStillNeeded}} of {{shift.desiredNumberOfVolunteers}}<br/>
+                        <button ion-button clear small (click)="signUp(shift.shiftId)">
+                            <div>Sign Up</div>
+                        </button>
+                    </ion-item>         
+            </ion-item-group>            
+        </ion-list>
+    </div>
+</ion-content>
