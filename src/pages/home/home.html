@@ -1,15 +1,45 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Church 52 Home</ion-title>
+    </ion-navbar>
+  </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-  <button ion-button block (click)="onViewEventsClick()">View Events</button>
+  <ion-list>
+    <ion-list-header>
+      Upcoming Events / callouts
+    </ion-list-header>
+    <ion-item>
+      TODO:: list of promotion call-outs
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>
+      Priority Announcements  
+    </ion-list-header>
+    <ion-item>
+      TODO:: insert priority video announcements here with in-app player
+    </ion-item>
+    <ion-list-header>
+      Priority Groups listing
+    </ion-list-header>
+    <ion-item>
+      TODO:: A callout for a specific group event or new group or some group notification.  can be a side scrolling list of group notifications.
+    </ion-item>
+    <ion-item>
+        <ion-slides pager autoplay="2000" loop>
+          <ion-slide>
+              <p>TODO:: list of high priority volunteering event #1</p>
+          </ion-slide>
+          <ion-slide>
+              <img src="http://www.dailyherald.com/storyimage/DA/20151127/news/151129066/EP/1/3/EP-151129066.jpg&updated=201511271529&MaxW=800&maxH=800&noborder" style="display:block;" />
+              <ion-card-title>First Wave</ion-card-title>
+              <p>Sign up to serve today!!</p>
+          </ion-slide>
+        </ion-slides>
+    </ion-item>
+  </ion-list>
 </ion-content>
