@@ -9,7 +9,7 @@
             <button ion-button menuToggle>
                 <ion-icon name="menu"></ion-icon>
             </button>
-            <ion-title>Campaigns</ion-title>
+            <ion-title>Serving with C52</ion-title>
         </ion-navbar>
     </ion-header>
 
@@ -19,11 +19,11 @@
     <ion-list *ngIf="!loading">
         <ion-card class="course-card" *ngFor="let item of campaigns">
             <ion-card-content>
-                <img src="{{item.logoUrl}}" (click)="getJobs(item.campaignId)" style="display:block;" />
+                <img src="{{item.logoUrl}}" (click)="getJobs(item)" style="display:block;" />
                 <ion-card-title>{{item.title}}</ion-card-title>
                 <p>{{item.description}}</p>
             </ion-card-content>
-            <button ion-button clear small (click)="getJobs(item.campaignId)">
+            <button ion-button clear small (click)="getJobs(item)">
                 <div>View Jobs</div>
             </button>
         </ion-card>
