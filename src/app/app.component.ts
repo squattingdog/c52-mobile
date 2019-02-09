@@ -25,7 +25,8 @@ export class MyApp {
 		// set our app's pages
 		this.pages = [
 			{ title: 'Home', component: HomePage, icon: 'home' },
-			{ title: 'Campaigns', component: CampaignsPage, icon: 'grid' },
+			{ title: 'Serve', component: CampaignsPage, icon: 'grid' },
+			{ title: 'Groups', component: undefined, icon: 'people' }
 		];
 
 		this.rootPage = HomePage;

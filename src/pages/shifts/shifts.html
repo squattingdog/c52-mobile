@@ -26,7 +26,7 @@
                     <ion-item *ngFor="let shift of shifts.get(key)" style="font-size: 14px;">
                         Time: {{shift.displayStartTime}} - {{shift.displayEndTime}}<br/>
                         Available: {{shift.numberOfVolunteersStillNeeded}} of {{shift.desiredNumberOfVolunteers}}<br/>
-                        <button ion-button clear small (click)="signUp(shift.shiftId)">
+                        <button ion-button clear small (click)="signUp(shift)">
                             <div>Sign Up</div>
                         </button>
                     </ion-item>         

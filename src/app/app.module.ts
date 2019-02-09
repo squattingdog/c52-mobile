@@ -15,6 +15,8 @@ import { ShiftsPage } from '../pages/shifts/shifts';
 import { CampaignService } from './../providers/campaign-service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { Toast } from '@ionic-native/toast/ngx';
+
 @NgModule({
   declarations: [
     MyApp
@@ -43,6 +45,7 @@ import { HttpClientModule } from '@angular/common/http';
     ,SplashScreen
     ,{provide: ErrorHandler, useClass: IonicErrorHandler}
     ,CampaignService
+    ,Toast
   ]
 })
 

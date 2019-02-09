@@ -12,13 +12,15 @@ import * as moment from 'moment';
 */
 @Injectable()
 export class CampaignService {
-    //private config: Config;
+    private baseUrl = "https://c52-node-dev.herokuapp.com";
+    // private baseUrl = "http://localhost:5000";
+    // private config: Config;
 
     constructor(private http:HttpClient) { }
 
     public getCampaigns():Observable<CampaignItem[]> {
         console.log('getting campaigns');
-        return this.http.get('https://c52-node-dev.herokuapp.com/api/v1/campaigns').pipe(
+        return this.http.get(`${this.baseUrl}/api/v1/campaigns`).pipe(
             map(
                 this.extractCampaignData,
                 catchError(this.handleError)
@@ -27,7 +29,7 @@ export class CampaignService {
     }
 
     public getJobs(campaignId: string):Observable<JobItem[]> {
-        return this.http.get(`https://c52-node-dev.herokuapp.com/api/v1/campaign/${campaignId}/jobs/`).pipe(
+        return this.http.get(`${this.baseUrl}/api/v1/campaign/${campaignId}/jobs/`).pipe(
             map(
                 this.extractJobData,
                 catchError(this.handleError)
@@ -36,9 +38,26 @@ export class CampaignService {
     }
 
     public getShifts(campaignId: string, jobId: string): Observable<ShiftItem[]> {
-        return this.http.get(`https://c52-node-dev.herokuapp.com/api/v1/campaign/${campaignId}/jobs/${jobId}/shifts/`).pipe(
+        return this.http.get(`${this.baseUrl}/api/v1/campaign/${campaignId}/job/${jobId}/shifts/`).pipe(
             map(
                 this.extractShiftData,
+                catchError(this.handleError)
+            )
+        );
+    }
+
+    public volunteerForShift(campaign: CampaignItem, job: JobItem, shift: ShiftItem, contactId: string): Observable<any> {
+        let uri = `${this.baseUrl}/api/v1/campaign/${campaign.campaignId}/job/${job.jobId}/shift/${shift.shiftId}/volunteer`;
+        let body = {
+            "startDateTime": shift.startDateTime,
+            "contactId": contactId
+        };
+        return this.http.post(uri, body).pipe(
+            map(
+                res => {
+                    let objectRes: any = res;
+                    return objectRes;
+                },
                 catchError(this.handleError)
             )
         );

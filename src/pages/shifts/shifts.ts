@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams } from 'ionic-angular';
+import { NavParams, ToastController, ToastOptions } from 'ionic-angular';
 import { CampaignService, ShiftItem, CampaignItem, JobItem } from '../../providers/campaign-service';
+// import { Toast } from '@ionic-native/toast/ngx';
 
 /*
   Generated class for the Campaigns page.
@@ -19,9 +20,11 @@ export class ShiftsPage implements OnInit {
     hasError: boolean = false;
     campaign: CampaignItem = null;
     job: JobItem = null;
-    
+    signupMessage = "";    
 
-    constructor(private navParams: NavParams, private campaignService: CampaignService) {
+    constructor(private navParams: NavParams, 
+                private campaignService: CampaignService,
+                private toast: ToastController) {
         
     }
 
@@ -49,8 +52,21 @@ export class ShiftsPage implements OnInit {
         return Array.from(this.shifts.keys());
     }
 
-    public signUp(shiftId: string): void {
-        //TODO: navigate to jobs page passing campaignId.
+    public signUp(shift: ShiftItem): void {
+        //TODO: signup for selected shift
+        this.campaignService.volunteerForShift(this.campaign, this.job, shift, "0031700000iIoYR").subscribe(data => {
+            let message: string;
+            if(data.success)  {
+                message = "Registration Complete. Thank you!!";
+            } else {
+                message = "Registration failed.", "5000", "top";
+            }
+            this.toast.create({
+                duration: 2500,
+                message: message,
+                position: "top"
+            }).present(); 
+        })
     }
 
     ionViewDidLoad() {
