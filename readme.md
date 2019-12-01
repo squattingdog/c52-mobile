@@ -3,16 +3,16 @@ This is the mobile app project.  It is an Ionic 4 with Angular 6 app.
 
 ## Dev Setup
 
-### Install Cordova
+### Install Cordova and Ionic
 
 ``` cli
-npm install -g cordova
+npm install -g cordova ionic
 ```
 
-### Install Ionic
+### Update Cordova and Ionic if already installed
 
 ``` cli
-npm install -g ionic
+npm update -g cordova ionic
 ```
 
 ### Install dependencies
