@@ -1,7 +1,0 @@
-{
-  "name": "C52-Mobile",
-  "integrations": {
-    "cordova": {}
-  },
-  "type": "angular"
-}
