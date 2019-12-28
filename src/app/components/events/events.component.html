@@ -1,0 +1,6 @@
+<ion-content>
+    <ion-spinner *ngIf="loading"></ion-spinner>
+    <ion-list *ngIf="!loading">
+        <app-event *ngFor="let campaign of campaigns" [event]="campaign"></app-event>
+    </ion-list>
+</ion-content>

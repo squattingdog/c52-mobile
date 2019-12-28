@@ -1,5 +1,7 @@
 {
   "name": "c52-mobile-new",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

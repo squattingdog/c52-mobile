@@ -1,0 +1,16 @@
+<ion-card class="course-card">
+<ion-card-content routerLink="{{job.jobId}}/shifts">
+        <ion-card-title>{{job.name}}</ion-card-title>
+        <p>{{job.description}}</p>
+        <ul>
+            <li>Volunteers Needed: {{job.numberOfVolunteersStillNeeded}}</li>
+            <li>Available Shifts: {{job.numberOfShifts}}</li>
+            <li>skills: {{job.skills}}</li>
+            <li>Recurring: {{job.ongoing ? 'yes' : 'no'}}</li>
+            <li>Location:
+                {{job.location.street}} <br/>
+                {{job.location.city}}, {{job.location.state}} {{job.location.zip}}
+            </li>
+        </ul>
+    </ion-card-content>
+</ion-card>

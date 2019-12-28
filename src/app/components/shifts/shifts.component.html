@@ -1,0 +1,27 @@
+<ion-content>
+  <ion-spinner *ngIf="loadingShifts  || loadingJob || loadingEvent"></ion-spinner>
+  <div *ngIf="!loadingShifts && shiftsMap.size === 0">There were not any shifts found for this event.</div>
+  <div *ngIf="!loadingShifts && shiftsMap.size > 0">
+    <div *ngIf="!loadingEvent && !loadingJob && !hasError">
+      <ion-img src="{{event.logoUrl}}"></ion-img>
+      <div class="ion-padding-left">
+        <ion-card-title>
+          <p>
+            {{event.title}} <br/>
+            {{job.name}}
+          </p>
+        </ion-card-title>
+      </div>
+    </div>
+    <ion-list class="ion-padding">
+      <ion-item-group *ngFor="let key of getKeys()">
+        <ion-list-header no-padding>
+          {{key}}
+        </ion-list-header>
+        <ion-item *ngFor="let shift of shiftsMap.get(key)" style="font-size: 14px;">
+          <app-shift [shift]="shift"></app-shift>
+        </ion-item>         
+      </ion-item-group>            
+    </ion-list>
+  </div>
+</ion-content>
