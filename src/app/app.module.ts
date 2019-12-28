@@ -1,52 +1,28 @@
-
-
-import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule, IonicPageModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
-
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { CampaignsPage } from './../pages/campaigns/campaigns';
-import { JobsPage } from '../pages/jobs/jobs';
-import { ShiftsPage } from '../pages/shifts/shifts';
-
-import { CampaignService } from './../providers/campaign-service';
+import { CampaignService } from './providers/campaign-service';
 import { HttpClientModule } from '@angular/common/http';
-
-import { Toast } from '@ionic-native/toast/ngx';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouteReuseStrategy } from '@angular/router';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    MyApp
-    ,HomePage
-    ,CampaignsPage
-    ,JobsPage
-    ,ShiftsPage
-  ]
-  ,imports: [
-    BrowserModule
-    ,HttpClientModule
-    ,IonicModule.forRoot(MyApp)
-    ,IonicPageModule.forChild(CampaignsPage)
-    ,IonicPageModule.forChild(JobsPage)
-    ,IonicPageModule.forChild(ShiftsPage)
-  ]
-  ,bootstrap: [IonicApp]
-  ,entryComponents: [
-    MyApp
-    ,HomePage
-    ,JobsPage
-    ,ShiftsPage
-  ]
-  ,providers: [
-    StatusBar
-    ,SplashScreen
-    ,{provide: ErrorHandler, useClass: IonicErrorHandler}
-    ,CampaignService
-    ,Toast
-  ]
+  declarations: [AppComponent],
+  entryComponents: [],
+  imports: [BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    HttpClientModule
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    CampaignService,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ],
+  bootstrap: [AppComponent]
 })
-
 export class AppModule {}

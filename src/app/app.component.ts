@@ -1,45 +1,27 @@
-import { Component, ViewChild } from '@angular/core';
-import { StatusBar } from '@ionic-native/status-bar';
+import { Component } from '@angular/core';
 
-import { App, MenuController, Nav, Platform } from 'ionic-angular';
-import { HomePage } from '../pages/home/home';
-import { CampaignsPage } from '../pages/campaigns/campaigns';
+import { Platform } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
-	templateUrl: 'app.html'
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss']
 })
-export class MyApp {
-	pages;
-	rootPage;
+export class AppComponent {
+  constructor(
+    private platform: Platform,
+    private splashScreen: SplashScreen,
+    private statusBar: StatusBar
+  ) {
+    this.initializeApp();
+  }
 
-	@ViewChild(Nav) nav: Nav;
-
-	constructor(
-		private app: App,
-		private platform: Platform,
-		private menu: MenuController,
-		private statusBar: StatusBar,
-	) {
-		this.initializeApp();
-
-		// set our app's pages
-		this.pages = [
-			{ title: 'Home', component: HomePage, icon: 'home' },
-			{ title: 'Serve', component: CampaignsPage, icon: 'grid' },
-			{ title: 'Groups', component: undefined, icon: 'people' }
-		];
-
-		this.rootPage = HomePage;
-	}
-
-	initializeApp() {
-		this.platform.ready().then(() => {
-			this.statusBar.styleDefault();
-		});
-	}
-
-	openPage(page) {
-		this.menu.close();
-		this.nav.setRoot(page.component);
-	}
+  initializeApp() {
+    this.platform.ready().then(() => {
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });
+  }
 }

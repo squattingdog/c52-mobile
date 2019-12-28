@@ -1,0 +1,16 @@
+<ion-content>
+    <ion-spinner *ngIf="loadingCampaign"></ion-spinner>
+    <div *ngIf="!loadingCampaign && !hasError">
+        <ion-img src="{{campaign.logoUrl}}"></ion-img>
+        <p class="ion-padding-left">
+            <ion-card-title>{{campaign.title}} Available Jobs</ion-card-title>
+        </p>
+    </div>
+    <div *ngIf="hasError">{{errorMessage}}</div>
+    <div *ngIf="!loadingJobs && jobs.length == 0">There were not any jobs found for this event.</div>
+    <div *ngIf="!loadingJobs && jobs.length > 0">
+        <ion-list>
+            <app-job *ngFor="let job of jobs" [job]="job"></app-job>
+        </ion-list>
+    </div>
+</ion-content>
