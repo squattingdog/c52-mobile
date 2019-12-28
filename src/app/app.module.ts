@@ -1,3 +1,4 @@
+import { MenuComponent } from './components/menu/menu.component';
 import { CampaignService } from './providers/campaign-service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -10,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MenuComponent],
   entryComponents: [],
   imports: [BrowserModule,
     IonicModule.forRoot(),
